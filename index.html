@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JS Typing Speed Test</title>
-    <script src="/script.js" async></script>
+    <script src="/script.js" defer></script>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i,900,900i"
         type="text/css" media="all">
     <link rel="stylesheet" href="style.css">
@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -31,8 +32,9 @@
             <div class="pattern">
                 متن الگو :
             </div>
-            <div id="origin-text">
-                <p>The text to test.</p>
+            <div id="origin-text" class=" row bg-secondary">
+                <p class="col-md-10 text-lead"></p>
+                <i id="refresh" class=" col-md-2 bi bi-arrow-clockwise text-indigo-500"></i>
 
             </div><!-- #origin-text -->
 

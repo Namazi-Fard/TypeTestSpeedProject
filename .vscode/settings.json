@@ -1,3 +1,5 @@
 {
-  "chat.editor.fontSize": 17
+  "chat.editor.fontSize": 17,
+  "editor.fontSize": 20,
+  "editor.mouseWheelZoom": true
 }
