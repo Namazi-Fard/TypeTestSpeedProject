@@ -111,22 +111,27 @@ Layout
 body {
     margin: 0;
     padding: 0;
+    background-image: url('/assets/—Pngtree—abstract\ fluid\ type\ geometrical\ background_1250774.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
 .masthead {
     padding: 1em 2em;
-    background-color: #0D1B2E;
+    background-color: #00000092;
     color: white;
 }
 
 .masthead h1 {
     text-align: center;
+    width: 100%;
 }
 
 .intro {
     padding: 2em 2em;
-    color: #ffffff;
-    background: #429890;
+    color: #e1e1e1c0;
+    background: #2f2e2e3e;
 }
 
 
@@ -139,11 +144,22 @@ body {
 .test-area {
     margin-bottom: 4em;
     padding: 0 2em;
+    height: 100%;
+}
+
+#test-area::placeholder {
+    color: #999;
+    opacity: 1;
 }
 
 .test-wrapper {
     border: 10px solid grey;
     border-radius: 10px;
+    height: 400px;
+}
+
+#main {
+    height: 100%;
 }
 
 #origin-text {
@@ -179,6 +195,26 @@ body {
     font-weight: bold;
 }
 
+/* Timer color states */
+.timer {
+    transition: color 120ms ease, text-shadow 120ms ease;
+    color: #333;
+    /* default color, adjust if needed */
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.timer.green {
+    color: #2aa54a;
+}
+
+.timer.yellow {
+    color: #e6b800;
+}
+
+.timer.red {
+    color: #e03e3e;
+}
+
 .pattern {
     direction: rtl;
     padding-top: 10px;
@@ -186,23 +222,37 @@ body {
 }
 
 #reset {
-
     margin-block: 10px;
     padding: .5em 1em;
     font-size: 1.2em;
     font-weight: bold;
-    color: #430a69;
+    color: #21BB87;
     background: white;
-    border: 7px solid #430a69;
+    border: 7px solid #38EF7D;
     border-radius: 5px;
 }
 
 #reset:hover {
     color: white;
-    background-color: #430a69;
+    background-color: #21BB87;
+}
+
+#refresh {
+    display: inline-block;
+    transition: transform 180ms ease, opacity 120ms ease;
+    transform-origin: center;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 2em;
 }
 
 #refresh:hover {
-    scale: 1.2;
-
+    transform: scale(1.12);
+    opacity: 0.95;
 }
+
+#refresh:active {
+    transform: scale(1.04);
+}
+
+/*--------------------------------------------------------------

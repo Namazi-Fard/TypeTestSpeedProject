@@ -3,11 +3,16 @@ const theTimer = document.querySelector(".timer");
 const testArea = document.querySelector("#test-area");
 // element reference and current text string
 const originTextEl = document.querySelector("#origin-text p");
+
 let originText = originTextEl ? originTextEl.innerHTML : "";
+
 const testWrapper = document.querySelector(".test-wrapper");
+
 const resetButton = document.querySelector("#reset");
+
 const refresh = document.querySelector("#refresh");
-// 100  words
+
+// 100  words list
 const defaultWords = [
   "bring",
   "the",
@@ -480,7 +485,6 @@ function randomSentence(wordCount = 4, words = defaultWords) {
   // Capitalize first letter and add period
   const s = sentence.join(" ");
   const s2 = s.charAt(0).toUpperCase() + s.slice(1) + ".";
-  console.log(s2);
   if (originTextEl) originTextEl.innerHTML = s2;
   originText = s2;
 }
@@ -491,6 +495,9 @@ resetButton.addEventListener("click", reset);
 refresh.addEventListener("click", () => {
   reset(); // clear test area, timer, and border
   randomSentence(); // generate a new sentence
+  alert("New sentence ready — start typing!");
 });
 // generate an initial sentence so there's output on load
 randomSentence();
+// show an alert on initial load
+// alert(" فرایند سنجش سرعت تایپ بدین گونه است که با شروع تایپ کاربر , تایمر شروع به شمارش زمان میکند و با تایپ هر حرف توسط کاربر مطابقت متن کاربر با متن نمایش داده شده چک میشود و در صورت اتمام متن تایمر متوقف میشود.  " );

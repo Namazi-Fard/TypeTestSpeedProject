@@ -17,29 +17,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
-<body>
+<body class="container-md ">
     <header class="masthead">
         <h1>تست سنجش سرعت تایپ</h1>
     </header>
-    <main class="main">
+    <main class="row" id="main">
         <article class="intro">
-            <p dir="rtl">
+            <p class="text-indigo-500" dir="rtl">
                 فرایند سنجش سرعت تایپ بدین گونه است
                 که با شروع تایپ کاربر , تایمر شروع به شمارش زمان میکند
                 !!! و با تایپ هر حرف توسط کاربر مطابقت متن کاربر با متن نمایش داده شده چک میشود</p>
         </article><!-- .intro -->
-        <section class="test-area">
-            <div class="pattern">
+        <!-- left section -->
+        <section class=" pt-4 test-area col-md-5">
+            <!-- <div class="pattern">
                 متن الگو :
-            </div>
-            <div id="origin-text" class=" row bg-secondary">
-                <p class="col-md-10 text-lead"></p>
-                <i id="refresh" class=" col-md-2 bi bi-arrow-clockwise text-indigo-500"></i>
+            </div> -->
+            <div id="origin-text" class=" row  bg-secondary bg-gradient bg-opacity-50 text-light p-3 rounded">
+                <p class="col-md-10 text-light fs-4"></p>
+                <i id="refresh" class=" col-md-2 bi bi-arrow-clockwise text-light fs-4"></i>
 
             </div><!-- #origin-text -->
 
             <div class="test-wrapper">
-                <textarea id="test-area" name="textarea" rows="6"
+                <textarea dir="rtl" id="test-area" name="textarea" rows="6"
                     placeholder=" با تایپ اولین حرف تایمر شمارش را آغاز میکند"></textarea>
             </div><!-- .test-wrapper -->
 
@@ -51,6 +52,21 @@
                 <button id="reset">از نو</button>
             </div><!-- .meta -->
         </section><!-- .test-area -->
+        <!-- right secction -->
+        <section class="container-xl  col-md-6 fs-3 lh-lg  d-none d-xl-block m-0 pt-3 ps-5">
+            <!-- Practice daily, fingers learn the rhythm. -->
+            <div class="text-light pt-1">روزانه تمرین کن؛ انگشتانت ریتم را یاد می‌گیرند.
+            </div>
+            <!-- Build muscle memory,type without looking. -->
+            <div class="text-light text-opacity-75 pt-1 ">حافظهٔ عضلانی بساز؛ بدون نگاه کردن تایپ کن.
+            </div>
+            <!-- 10-finger typing turns effort into flow. -->
+            <div class="text-light text-opacity-50 pt-1">تایپ ده‌انگشتی تلاش را به جریان تبدیل می‌کند.
+            </div>
+            <!-- Master ten fingers, boost your speed. -->
+            <div class="text-light text-opacity-25 pt-1">بر تایپ ده‌انگشتی مسلط شو، سرعتت را بالا ببر.
+            </div>
+        </section><!-- advertisement side bar -->
     </main>
 </body>
 
