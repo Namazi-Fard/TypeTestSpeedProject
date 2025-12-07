@@ -198,7 +198,7 @@ body {
 /* Timer color states */
 .timer {
     transition: color 120ms ease, text-shadow 120ms ease;
-    color: #333;
+    color: #ffffff;
     /* default color, adjust if needed */
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
 }
@@ -253,6 +253,96 @@ body {
 
 #refresh:active {
     transform: scale(1.04);
+}
+
+/* Auto popup (toast) */
+.auto-popup-container {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 9999999999;
+    pointer-events: none;
+}
+
+/* the center-center position container ( i mean use this class 'center-center' on container) */
+.auto-popup-container.center-center {
+    left: 50% !important;
+    top: 30% !important;
+    right: auto !important;
+    bottom: auto !important;
+    /* to center the container in the viewport. */
+    transform: translate(-50%, -50%);
+    align-items: center;
+}
+
+/*  i want a bigger popup  */
+.auto-popup.big {
+    max-width: 540px;
+    padding: 1rem 1.2rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+}
+
+.auto-popup {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.621);
+    color: #fff;
+    padding: 0.65rem 0.9rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.562);
+    max-width: 360px;
+    /* start at first invisible */
+    opacity: 0;
+    transform: translateY(1000px) scale(0.98);
+    animation: popup-in 180ms ease forwards;
+    font-size: 0.95rem;
+    -webkit-transform: translateY(1000px) scale(0.98);
+    -moz-transform: translateY(1000px) scale(0.98);
+    -ms-transform: translateY(1000px) scale(0.98);
+    -o-transform: translateY(1000px) scale(0.98);
+    -webkit-animation: popup-in 180ms ease forwards;
+}
+
+.auto-popup.hide {
+    animation: popup-out 220ms ease forwards;
+}
+
+@keyframes popup-in {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes popup-out {
+    to {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+}
+
+.motivate {
+    transition: transform 180ms ease, opacity 120ms ease;
+    -webkit-transition: transform 180ms ease, opacity 120ms ease;
+    -moz-transition: transform 180ms ease, opacity 120ms ease;
+    -ms-transition: transform 180ms ease, opacity 120ms ease;
+    -o-transition: transform 180ms ease, opacity 120ms ease;
+}
+
+.motivate:hover {
+    /*transform: scale(1.5);
+    */
+    transform: translate(-40px);
+    -webkit-transform: translate(-40px);
+    -moz-transform: translate(-40px);
+    -ms-transform: translate(-40px);
+    -o-transform: translate(-40px);
+    opacity: 0.9;
 }
 
 /*--------------------------------------------------------------

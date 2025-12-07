@@ -418,7 +418,7 @@ const defaultWords = [
 var timer = [0, 0, 0, 0];
 var timerRunnig = false;
 var interval;
-
+// Add leading zero to numbers 9 or below (purely for aesthetics)
 function leadingZero(time) {
   if (time <= 9) {
     time = "0" + time;
@@ -426,6 +426,7 @@ function leadingZero(time) {
 
   return time;
 }
+// Run a standard minute/second/hundredths timer
 function runTimer() {
   let currentTime =
     leadingZero(timer[0]) +
@@ -439,6 +440,7 @@ function runTimer() {
   timer[1] = Math.floor(timer[3] / 100) - timer[0] * 60;
   timer[2] = Math.floor(timer[3] - timer[1] * 100 - timer[0] * 6000);
 }
+// Check the spelling of the entered text
 function spellCheck() {
   let textEntered = testArea.value;
   let originTextMatch = originText.substring(0, textEntered.length);
@@ -454,6 +456,7 @@ function spellCheck() {
     }
   }
 }
+// Reset everything
 function reset() {
   clearInterval(interval);
   interval = null;
@@ -464,6 +467,7 @@ function reset() {
   testWrapper.style.borderColor = "grey";
   randomSentence();
 }
+// Start the timer
 function Start() {
   let textEnteredLength = testArea.value.length;
 
@@ -488,6 +492,47 @@ function randomSentence(wordCount = 4, words = defaultWords) {
   if (originTextEl) originTextEl.innerHTML = s2;
   originText = s2;
 }
+
+// Show a small auto-dismissing popup (toast). i set duration to milliseconds.
+function showAutoPopup(
+  text,
+  duration = 3000,
+  position = "bottom-right",
+  big = false
+) {
+  // position: 'bottom-right' (default), 'top-right', 'top-left', 'bottom-left',
+  // 'top-center', 'bottom-center', 'center-center'
+  const posClass = position || "bottom-right";
+  // Try to find a container for this position; otherwise create one
+  let container = document.querySelector(".auto-popup-container." + posClass);
+  if (!container) {
+    // fallback: find any container without position class
+    container = document.querySelector(".auto-popup-container");
+  }
+  if (!container) {
+    container = document.createElement("div");
+    container.className = "auto-popup-container " + posClass;
+    document.body.appendChild(container);
+  } else {
+    // ensure the container has the position class so future queries work
+    if (!container.classList.contains(posClass))
+      container.classList.add(posClass);
+  }
+
+  const el = document.createElement("div");
+  el.className = "auto-popup" + (big ? " big" : "");
+  el.textContent = text;
+  container.appendChild(el);
+
+  // hide after duration
+  const hideDelay = Math.max(220, duration - 200);
+  setTimeout(() => {
+    el.classList.add("hide");
+    setTimeout(() => el.remove(), 260);
+  }, hideDelay);
+
+  return el;
+}
 // set an event
 testArea.addEventListener("keypress", Start);
 testArea.addEventListener("keyup", spellCheck);
@@ -495,9 +540,20 @@ resetButton.addEventListener("click", reset);
 refresh.addEventListener("click", () => {
   reset(); // clear test area, timer, and border
   randomSentence(); // generate a new sentence
-  alert("New sentence ready — start typing!");
+  showAutoPopup(
+    "New sentence ready — start typing!",
+    2800,
+    "center-center",
+    true
+  );
 });
 // generate an initial sentence so there's output on load
 randomSentence();
-// show an alert on initial load
-// alert(" فرایند سنجش سرعت تایپ بدین گونه است که با شروع تایپ کاربر , تایمر شروع به شمارش زمان میکند و با تایپ هر حرف توسط کاربر مطابقت متن کاربر با متن نمایش داده شده چک میشود و در صورت اتمام متن تایمر متوقف میشود.  " );
+// show a non-blocking popup on initial load
+// show a centered, slightly larger non-blocking popup on initial load
+showAutoPopup(
+  "New sentence ready — start typing!",
+  3000,
+  "center-center",
+  true
+);
